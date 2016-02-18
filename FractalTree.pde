@@ -92,7 +92,7 @@ class Snowflake
 
   public void wrap()
   {
-    if(y>=450){
+    if(y>=475){
       y = 0;
       x = (int)(Math.random()*640);
     }
