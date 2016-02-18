@@ -1,12 +1,11 @@
 Snowflake[] snowSwag = new Snowflake[100];
 private double fractionLength = .8; 
-private int smallestBranch = 10; 
-private double branchAngle = .2; 
+private int smallestBranch = 1; 
+private double branchAngle = .4; 
 private color randomColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255)); 
 
 public void setup() 
 {   
-	
 	size(640,480); 
 	for(int j=0; j<snowSwag.length; j++){
   		snowSwag[j] = new Snowflake();
@@ -17,6 +16,7 @@ public void draw()
 {   
 	background(0);
 	stroke(randomColor);   
+	strokeWeight(1.5);
 	line(320,480,320,380);   
 	drawBranches(320,380,100,3*Math.PI/2);
 
@@ -27,9 +27,26 @@ public void draw()
   		snowSwag[x].wrap();
   		snowSwag[x].show();
   		
-}
-
+	}
 } 
+
+public void mouseClicked(){
+	
+		for(int x=0; x<snowSwag.length; x++){
+  			if(snowSwag[x].isMoving==false){
+  				if(snowSwag[x].x < 320){
+  					snowSwag[x].x-=10;
+  					snowSwag[x].y+=10;
+  				}
+  				if(snowSwag[x].x >= 320){
+  					snowSwag[x].x+=10;
+  					snowSwag[x].y+=10;
+  				}
+  				
+		}
+	}
+	
+}
 
 public void drawBranches(int x,int y, double branchLength, double angle) 
 {   
@@ -44,6 +61,7 @@ public void drawBranches(int x,int y, double branchLength, double angle)
 	int endX2 = (int)(branchLength*Math.cos(angle2) + x);
 	int endY2 = (int)(branchLength*Math.sin(angle2) + y);
 
+	strokeWeight(1.5);
 	line(x,y,endX1,endY1);
 	line(x,y,endX2, endY2);
 
