@@ -69,9 +69,9 @@ class Snowflake
 
   public void show()
   {
-    stroke(0);
+    noStroke();
     fill(255);
-    ellipse(x, y, 5, 5);
+    ellipse(x, y, 7, 7);
   }
 
   public void lookDown()
