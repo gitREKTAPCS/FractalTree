@@ -99,6 +99,7 @@ class Snowflake
     }else{
       isMoving=true;
     }
+
   }
 
   public void move()
